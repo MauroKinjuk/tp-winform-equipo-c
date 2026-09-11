@@ -16,5 +16,10 @@ namespace TPWinForm_equipo_c
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

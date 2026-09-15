@@ -23,7 +23,10 @@ namespace negocio
             conexion = new SqlConnection();
             comando = new SqlCommand();
 
-            conexion.ConnectionString = "server=DESKTOP-EP5B3K1\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
+            if (Environment.MachineName == "LUCIOWINVM")
+                conexion.ConnectionString = "server=192.168.122.1; database=CATALOGO_P3_DB; User id=sa; Password=SafePass.123; TrustServerCertificate=True;";
+            else 
+                conexion.ConnectionString = "server=DESKTOP-EP5B3K1\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
         }
 
         public void setearConsulta(string consulta)
@@ -32,12 +35,30 @@ namespace negocio
             comando.CommandText = consulta;
         }
 
+        public void setearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
 
         public void ejecutarLectura()
         {
             comando.Connection = conexion;
             conexion.Open();
             lector = comando.ExecuteReader();
+        }
+
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void cerrarConexion()

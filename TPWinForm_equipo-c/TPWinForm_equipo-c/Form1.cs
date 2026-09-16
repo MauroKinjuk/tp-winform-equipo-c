@@ -23,12 +23,9 @@ namespace TPWinForm_equipo_c
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-
             dgvArticulos.AutoGenerateColumns = true;
 
-            listaArticulos = negocio.listar();
-            dgvArticulos.DataSource = listaArticulos;
+            cargarArticulos();
 
             List<string> marcas = listaArticulos
                 .Select(x => x.Marca.Descripcion)
@@ -36,14 +33,8 @@ namespace TPWinForm_equipo_c
                 .ToList();
 
             marcas.Insert(0, "Todas");
-
             cboMarca.DataSource = marcas;
 
-            dgvArticulos.Columns["Id"].Visible = false;
-            dgvArticulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            
-            
             cboCampo.Items.Add("Código");
             cboCampo.Items.Add("Nombre");
             cboCampo.Items.Add("Descripción");
@@ -57,6 +48,25 @@ namespace TPWinForm_equipo_c
         }
 
       
+        public void cargarArticulos()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                listaArticulos = negocio.listar();
+                dgvArticulos.DataSource = listaArticulos;
+
+                dgvArticulos.Columns["Id"].Visible = false;
+                dgvArticulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex) 
+            {
+                throw ex;
+            }
+
+        }
+
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtBuscar.Text;
@@ -201,6 +211,7 @@ namespace TPWinForm_equipo_c
                 if (respuesta == DialogResult.Yes)
                 {
                     negocio.eliminar(seleccionado.Id);
+                    cargarArticulos();
                 }
             }
             catch (Exception ex)

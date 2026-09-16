@@ -185,5 +185,28 @@ namespace TPWinForm_equipo_c
 
             dgvArticulos.Columns["Id"].Visible = false;
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Desea eliminar '" + seleccionado.Nombre + "'?",
+                    "Eliminando",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    negocio.eliminar(seleccionado.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

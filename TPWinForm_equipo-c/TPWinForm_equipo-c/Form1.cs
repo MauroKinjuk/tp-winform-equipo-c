@@ -46,7 +46,6 @@ namespace TPWinForm_equipo_c
             cboCampo.SelectedIndex = 0;
             cboCriterio.SelectedIndex = 0;
         }
-
       
         public void cargarArticulos()
         {
@@ -218,6 +217,18 @@ namespace TPWinForm_equipo_c
             {
                 throw ex;
             }
+        }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMarcas marcas = new frmMarcas();
+            marcas.ShowDialog();
+        }
+
+        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCategorias categorias = new frmCategorias();
+            categorias.ShowDialog();
         }
     }
 }

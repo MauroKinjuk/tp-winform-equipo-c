@@ -26,7 +26,7 @@ namespace negocio
             if (Environment.MachineName == "LUCIOWINVM")
                 conexion.ConnectionString = "server=192.168.122.1; database=CATALOGO_P3_DB; User id=sa; Password=SafePass.123; TrustServerCertificate=True;";
             else 
-                conexion.ConnectionString = "server=DESKTOP-EP5B3K1\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
         }
 
         public void setearConsulta(string consulta)

@@ -16,5 +16,25 @@ namespace TPWinForm_equipo_c
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

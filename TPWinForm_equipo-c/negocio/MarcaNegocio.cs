@@ -4,7 +4,7 @@ using dominio;
 
 namespace negocio
 {
-    internal class MarcaNegocio
+    public class MarcaNegocio
     {
         public List<Marca> listar() 
         {
@@ -22,6 +22,26 @@ namespace negocio
                     lista.Add(aux);
                 }
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("insert into MARCAS (Descripcion) values (@Descripcion)");
+                datos.setearParametro("@Descripcion", marca.Descripcion);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

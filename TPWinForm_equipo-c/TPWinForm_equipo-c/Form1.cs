@@ -47,7 +47,7 @@ namespace TPWinForm_equipo_c
             cboCriterio.SelectedIndex = 0;
         }
       
-        public void cargarArticulos()
+        private void cargarArticulos()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
 

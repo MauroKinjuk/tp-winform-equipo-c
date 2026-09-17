@@ -295,6 +295,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Name = "FrmArticulo";
             this.Text = "FrmArticulo";
+            this.Load += new System.EventHandler(this.FrmArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

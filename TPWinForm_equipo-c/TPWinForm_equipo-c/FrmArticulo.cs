@@ -101,5 +101,10 @@ namespace TPWinForm_equipo_c
         {
 
         }
+
+        private void FrmArticulo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,11 +46,6 @@ namespace TPWinForm_equipo_c
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             MarcaNegocio negocio = new MarcaNegocio();
@@ -70,6 +65,45 @@ namespace TPWinForm_equipo_c
             {
                 throw ex;
             }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Marca marcaSeleccionada = (Marca) dgvMarcas.CurrentRow.DataBoundItem;
+
+            frmModificarMarca modMarca = new frmModificarMarca(marcaSeleccionada);
+            modMarca.ShowDialog();
+
+            cargarMarcas();
+        }
+
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            MarcaNegocio negocio = new MarcaNegocio();
+            Marca marcaSeleccionada = (Marca) dgvMarcas.CurrentRow.DataBoundItem;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Desea eliminar '" + marcaSeleccionada.Descripcion + "'?",
+                "Eliminando",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    negocio.eliminar(marcaSeleccionada.Id);
+                    cargarMarcas();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

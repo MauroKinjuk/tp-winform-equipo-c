@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,19 @@ namespace TPWinForm_equipo_c
 {
     public partial class FrmArticulo : Form
     {
+        private Articulo articulo = null;
+        private List<Imagen> imagenes = new List<Imagen>();
+        private int indiceImagen = 0;
+
         public FrmArticulo()
         {
             InitializeComponent();
+        }
+        
+        public FrmArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,7 +46,15 @@ namespace TPWinForm_equipo_c
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
+            if (txtUrlImagen.Text.Trim() == "")
+                return;
 
+            Imagen img = new Imagen();
+            img.ImagenUrl = txtUrlImagen.Text.Trim();
+            imagenes.Add(img);
+            indiceImagen = imagenes.Count - 1;
+            //mostrarImagen();
+            txtUrlImagen.Clear();
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -74,7 +94,12 @@ namespace TPWinForm_equipo_c
 
         private void btnQuitarImagen_Click(object sender, EventArgs e)
         {
-
+            if (imagenes.Count == 0) { 
+                imagenes.RemoveAt(indiceImagen);
+                if (indiceImagen >= imagenes.Count)
+                    indiceImagen = imagenes.Count - 1;
+                mostrarImagen();
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -84,17 +109,40 @@ namespace TPWinForm_equipo_c
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-
+            if (indiceImagen > 0)
+            {
+                indiceImagen--;
+                mostrarImagen();
+            }
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
+            if (indiceImagen < imagenes.Count - 1)
+            {
+                indiceImagen++;
+                mostrarImagen();
+            }
+        }
 
+        private void mostrarImagen()
+        {
+            try
+            {
+                if (imagenes.Count > 0)
+                    pictureBox1.Load(imagenes[indiceImagen].ImagenUrl);
+                else
+                    pictureBox1.Image = null;
+            }
+            catch (Exception)
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -104,7 +152,34 @@ namespace TPWinForm_equipo_c
 
         private void FrmArticulo_Load(object sender, EventArgs e)
         {
+            MarcaNegocio negocioMarca = new MarcaNegocio();
+            CategoriaNegocio negocioCategoria = new CategoriaNegocio();
+            try {
+                comboMarca.DataSource = negocioMarca.listar();
+                comboMarca.ValueMember = "Id";
+                comboMarca.DisplayMember = "Descripcion";
 
+                comboCategoria.DataSource = negocioCategoria.listar();
+                comboCategoria.ValueMember = "Id";
+                comboCategoria.DisplayMember = "Descripcion";
+
+                if (articulo != null) { 
+                    txtCodigo.Text = articulo.Codigo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtPrecio.Text = articulo.Precio.ToString();
+                    comboMarca.SelectedValue = articulo.Marca.Id;
+                    comboCategoria.SelectedValue = articulo.Categoria.Id;
+
+                    ImagenNegocio imagenNegocio = new ImagenNegocio();
+                    imagenes = imagenNegocio.listarPorArticulo(articulo.Id);
+                    //mostrarImagen();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

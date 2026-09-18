@@ -230,5 +230,25 @@ namespace TPWinForm_equipo_c
             frmCategorias categorias = new frmCategorias();
             categorias.ShowDialog();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmArticulo alta = new FrmArticulo();
+            alta.ShowDialog();
+            cargarArticulos();
+        }
+
+        private void modficar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar un artículo");
+                return;
+            }
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            FrmArticulo modificar = new FrmArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargarArticulos();
+        }
     }
 }

@@ -60,9 +60,12 @@
             // 
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategorias.Location = new System.Drawing.Point(50, 97);
+            this.dgvCategorias.MultiSelect = false;
             this.dgvCategorias.Name = "dgvCategorias";
+            this.dgvCategorias.ReadOnly = true;
             this.dgvCategorias.RowHeadersWidth = 49;
             this.dgvCategorias.RowTemplate.Height = 24;
+            this.dgvCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategorias.Size = new System.Drawing.Size(343, 282);
             this.dgvCategorias.TabIndex = 2;
             this.dgvCategorias.TabStop = false;
@@ -75,6 +78,7 @@
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -84,6 +88,7 @@
             this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -93,6 +98,7 @@
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCancelar
             // 
@@ -122,6 +128,7 @@
             this.Name = "frmCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Categorias";
+            this.Load += new System.EventHandler(this.frmCategorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

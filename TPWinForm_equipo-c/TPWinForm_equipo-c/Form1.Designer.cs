@@ -56,9 +56,12 @@
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(12, 226);
             this.dgvArticulos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.ReadOnly = true;
             this.dgvArticulos.RowHeadersWidth = 62;
             this.dgvArticulos.RowTemplate.Height = 28;
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(1012, 131);
             this.dgvArticulos.TabIndex = 0;
             // 
@@ -204,7 +207,7 @@
             this.administraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1060, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1060, 29);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -214,20 +217,20 @@
             this.marcasToolStripMenuItem,
             this.categoríasToolStripMenuItem});
             this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
-            this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(123, 25);
             this.administraciónToolStripMenuItem.Text = "Administración";
             // 
             // marcasToolStripMenuItem
             // 
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(162, 26);
             this.marcasToolStripMenuItem.Text = "Marcas";
             this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
             // categoríasToolStripMenuItem
             // 
             this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
-            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(162, 26);
             this.categoríasToolStripMenuItem.Text = "Categorías";
             this.categoríasToolStripMenuItem.Click += new System.EventHandler(this.categoríasToolStripMenuItem_Click);
             // 

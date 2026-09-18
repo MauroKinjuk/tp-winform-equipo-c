@@ -21,6 +21,7 @@ namespace TPWinForm_equipo_c
         {
             InitializeComponent();
         }
+
         private void frmMarcas_Load(object sender, EventArgs e)
         {
             dgvMarcas.AutoGenerateColumns = true;
@@ -85,7 +86,7 @@ namespace TPWinForm_equipo_c
 
             try
             {
-                DialogResult respuesta = MessageBox.Show("Desea eliminar '" + marcaSeleccionada.Descripcion + "'?",
+                DialogResult respuesta = MessageBox.Show(this, "Desea eliminar '" + marcaSeleccionada.Descripcion + "'?",
                 "Eliminando",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
@@ -101,6 +102,7 @@ namespace TPWinForm_equipo_c
                 throw ex;
             }
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();

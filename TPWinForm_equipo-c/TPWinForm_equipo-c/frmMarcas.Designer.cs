@@ -60,9 +60,12 @@
             // 
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.Location = new System.Drawing.Point(50, 97);
+            this.dgvMarcas.MultiSelect = false;
             this.dgvMarcas.Name = "dgvMarcas";
+            this.dgvMarcas.ReadOnly = true;
             this.dgvMarcas.RowHeadersWidth = 49;
             this.dgvMarcas.RowTemplate.Height = 24;
+            this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMarcas.Size = new System.Drawing.Size(343, 282);
             this.dgvMarcas.TabIndex = 5;
             this.dgvMarcas.TabStop = false;
@@ -89,7 +92,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(183, 399);
+            this.btnEliminar.Location = new System.Drawing.Point(185, 399);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 29);
             this.btnEliminar.TabIndex = 3;

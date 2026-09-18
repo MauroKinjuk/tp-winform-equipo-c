@@ -147,7 +147,44 @@ namespace TPWinForm_equipo_c
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            ImagenNegocio imagenNegocio = new ImagenNegocio(); ;
+            try { 
+                if (articulo == null)
+                    articulo = new Articulo();
 
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
+                articulo.Marca = (Marca)comboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)comboCategoria.SelectedItem;
+
+                if (articulo.Id == 0) {
+                    articulo.Id = negocio.agregar(articulo);
+                    foreach (Imagen img in imagenes)
+                    {
+                        img.IdArticulo = articulo.Id;
+                        imagenNegocio.agregar(img);
+                    }
+                    MessageBox.Show("Artículo agregado correctamente");
+                }
+                else { 
+                    negocio.modificar(articulo);
+                    imagenNegocio.eliminarPorArticulo(articulo.Id);
+                    foreach (Imagen img in imagenes)
+                    {
+                        img.IdArticulo = articulo.Id;
+                        imagenNegocio.agregar(img);
+                    }
+                    MessageBox.Show("Artículo modificado correctamente");
+                }
+                Close();
+            }   
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void FrmArticulo_Load(object sender, EventArgs e)

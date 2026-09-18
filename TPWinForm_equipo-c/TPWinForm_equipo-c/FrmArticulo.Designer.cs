@@ -88,6 +88,7 @@
             // 
             // comboMarca
             // 
+            this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMarca.FormattingEnabled = true;
             this.comboMarca.Location = new System.Drawing.Point(120, 190);
             this.comboMarca.Name = "comboMarca";
@@ -97,6 +98,7 @@
             // 
             // comboCategoria
             // 
+            this.comboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCategoria.FormattingEnabled = true;
             this.comboCategoria.Location = new System.Drawing.Point(120, 217);
             this.comboCategoria.Name = "comboCategoria";
@@ -136,10 +138,10 @@
             // 
             this.btnAnterior.Location = new System.Drawing.Point(77, 326);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnAnterior.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnAnterior.Size = new System.Drawing.Size(75, 23);
             this.btnAnterior.TabIndex = 9;
-            this.btnAnterior.Text = ">";
+            this.btnAnterior.Text = "<";
             this.btnAnterior.UseVisualStyleBackColor = true;
             this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 

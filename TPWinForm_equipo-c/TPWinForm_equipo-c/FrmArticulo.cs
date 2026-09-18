@@ -29,21 +29,6 @@ namespace TPWinForm_equipo_c
             this.articulo = articulo;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
             if (txtUrlImagen.Text.Trim() == "")
@@ -57,41 +42,6 @@ namespace TPWinForm_equipo_c
             txtUrlImagen.Clear();
         }
 
-        private void txtCodigo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDescripcion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPrecio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUrlImagen_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnQuitarImagen_Click(object sender, EventArgs e)
         {
             if (imagenes.Count > 0) { 
@@ -102,7 +52,7 @@ namespace TPWinForm_equipo_c
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pbxImagen_Click(object sender, EventArgs e)
         {
 
         }

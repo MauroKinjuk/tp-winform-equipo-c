@@ -147,6 +147,8 @@ namespace TPWinForm_equipo_c
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!validarCampos())
+                return;
             ArticuloNegocio negocio = new ArticuloNegocio();
             ImagenNegocio imagenNegocio = new ImagenNegocio(); ;
             try { 
@@ -185,6 +187,20 @@ namespace TPWinForm_equipo_c
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private bool validarCampos() {
+            if (txtCodigo.Text.Trim() == "" || txtNombre.Text.Trim() == "") {
+                MessageBox.Show("Codigo y nombre son obligatorios");
+                return false;
+            }
+            decimal precio;
+            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            {
+                MessageBox.Show("Precio debe ser un número válido");
+                return false;
+            }
+            return true;
         }
 
         private void FrmArticulo_Load(object sender, EventArgs e)

@@ -53,7 +53,7 @@ namespace TPWinForm_equipo_c
             img.ImagenUrl = txtUrlImagen.Text.Trim();
             imagenes.Add(img);
             indiceImagen = imagenes.Count - 1;
-            //mostrarImagen();
+            mostrarImagen();
             txtUrlImagen.Clear();
         }
 
@@ -94,7 +94,7 @@ namespace TPWinForm_equipo_c
 
         private void btnQuitarImagen_Click(object sender, EventArgs e)
         {
-            if (imagenes.Count == 0) { 
+            if (imagenes.Count > 0) { 
                 imagenes.RemoveAt(indiceImagen);
                 if (indiceImagen >= imagenes.Count)
                     indiceImagen = imagenes.Count - 1;
@@ -173,7 +173,7 @@ namespace TPWinForm_equipo_c
 
                     ImagenNegocio imagenNegocio = new ImagenNegocio();
                     imagenes = imagenNegocio.listarPorArticulo(articulo.Id);
-                    //mostrarImagen();
+                    mostrarImagen();
                 }
             }
             catch (Exception ex)
